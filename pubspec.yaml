@@ -1,0 +1,48 @@
+name: guide_selective_process
+description: A new Flutter project.
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.18.4 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+
+  logger: ^1.1.0
+
+  get: ^4.6.5
+  dio: ^4.0.6
+  fl_chart: ^0.55.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+
+  fonts:
+    - family: Muli
+      fonts:
+        - asset: assets/fonts/muliregular.ttf
+        - asset: assets/fonts/mulisemibold.ttf
+          weight: 600
+        - asset: assets/fonts/mulibold.ttf
+          weight: 700
+        - asset: assets/fonts/muliextrabold.ttf
+          weight: 800
+        - asset: assets/fonts/muliblack.ttf
+          weight: 900
