@@ -46,14 +46,18 @@ class HomeStore extends GetxController {
   //Logic functions
 
   calcCardPercentage() {
-    if (chart.meta!.regularMarketPrice! > chart.meta!.chartPreviousClose!) {
-      var diff = chart.meta!.regularMarketPrice! - chart.meta!.chartPreviousClose!;
-      var percentage = ((chart.meta!.regularMarketPrice! - chart.meta!.chartPreviousClose!) / chart.meta!.chartPreviousClose!) * 100;
+    var nowPrice = chart.indicators?.quote?[0].open?.last ?? 0.0;
+    var lastOpenPrice = chart.indicators?.quote?[0].open?[28] ?? 0.0;
+    if (nowPrice == 0.0 && lastOpenPrice == 0.0) {
+      cardView = CardViewModel(isPositive: true, diff: 0.0, percentage: 0.0);
+    } else if (nowPrice > lastOpenPrice) {
+      var diff = nowPrice - lastOpenPrice;
+      var percentage = ((nowPrice - lastOpenPrice) / nowPrice) * 100;
       cardView = CardViewModel(isPositive: true, diff: diff, percentage: percentage);
     } else {
-      var diff = chart.meta!.chartPreviousClose! - chart.meta!.regularMarketPrice!;
-      var percentage = ((chart.meta!.chartPreviousClose! - chart.meta!.regularMarketPrice!) / chart.meta!.chartPreviousClose!) * 100;
-      cardView = CardViewModel(isPositive: true, diff: diff, percentage: percentage);
+      var diff = lastOpenPrice - nowPrice;
+      var percentage = ((lastOpenPrice - nowPrice) / lastOpenPrice) * 100;
+      cardView = CardViewModel(isPositive: false, diff: diff, percentage: percentage);
     }
   }
 }

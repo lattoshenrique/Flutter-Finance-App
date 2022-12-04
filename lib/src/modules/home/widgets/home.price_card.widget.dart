@@ -32,6 +32,9 @@ class HomePriceCard extends GetView<HomeController> {
               Icon((controller.cardView.isPositive!) ? Icons.trending_up : Icons.trending_down,
                   size: media.width * 0.1, color: (controller.cardView.isPositive!) ? Colors.green : Colors.red),
             ]),
+            //SizedBox(height: media.width * 0.02),
+            Text(DateFormat("dd/MM/yyyy").format(DateTime.fromMillisecondsSinceEpoch(controller.chart.timestamp!.last * 1000)),
+                style: AppStyles.subtitle1),
             SizedBox(height: media.width * 0.05),
             Row(children: [
               Flexible(
@@ -44,7 +47,7 @@ class HomePriceCard extends GetView<HomeController> {
                       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                         Row(
                           children: [
-                            Text(NumberFormat('#,##0.00', 'pt_BR').format(controller.chart.meta!.regularMarketPrice!),
+                            Text(NumberFormat('#,##0.00', 'pt_BR').format(controller.chart.indicators?.quote?[0].open?.last ?? 0.0),
                                 style: AppStyles.head1.copyWith(color: Colors.black, fontWeight: FontWeight.bold, fontSize: media.width * 0.12)),
                             SizedBox(width: media.width * 0.02),
                             Text("BRL", style: AppStyles.body1.copyWith(fontSize: media.width * 0.05)),
@@ -59,10 +62,10 @@ class HomePriceCard extends GetView<HomeController> {
                                 fontSize: media.width * 0.06,
                                 color: (controller.cardView.isPositive!) ? Colors.green : Colors.red)),
                         SizedBox(height: media.width * 0.02),
-                        Text('Baseado no último pregão', style: AppStyles.subtitle1)
+                        Text('Baseado na abertura do último pregão', style: AppStyles.subtitle1)
                       ]))),
             ]),
-            SizedBox(height: media.width * 0.08),
+            SizedBox(height: media.width * 0.05),
             InkWell(
                 onTap: () => Get.toNamed(AppRoutes.PRICE_VARIATION),
                 child: const HomeCardButton(
