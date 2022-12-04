@@ -47,8 +47,9 @@ class HomePriceCard extends GetView<HomeController> {
                       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                         Row(
                           children: [
-                            Text(NumberFormat('#,##0.00', 'pt_BR').format(controller.chart.indicators?.quote?[0].open?.last ?? 0.0),
-                                style: AppStyles.head1.copyWith(color: Colors.black, fontWeight: FontWeight.bold, fontSize: media.width * 0.12)),
+                            Flexible(
+                                child: Text(NumberFormat('#,##0.00', 'pt_BR').format(controller.chart.indicators?.quote?[0].open?.last ?? 0.0),
+                                    style: AppStyles.head1.copyWith(color: Colors.black, fontWeight: FontWeight.bold, fontSize: media.width * 0.12))),
                             SizedBox(width: media.width * 0.02),
                             Text("BRL", style: AppStyles.body1.copyWith(fontSize: media.width * 0.05)),
                           ],

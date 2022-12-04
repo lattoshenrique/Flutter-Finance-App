@@ -30,7 +30,10 @@ class HomeStore extends GetxController {
     queryResult.assignAll(await _searchRepository.fetchSymbol(term));
     if (queryResult.isEmpty) {
       Get.snackbar("Oops!", 'Não encontrei resultados para o termo: "$term"',
-          margin: const EdgeInsets.all(20.0), snackPosition: SnackPosition.BOTTOM, backgroundColor: AppColors.SECUNDARY);
+          margin: const EdgeInsets.all(20.0),
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: AppColors.SECUNDARY,
+          colorText: AppColors.PRIMARY);
     }
   }
 

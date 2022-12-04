@@ -34,24 +34,24 @@ class PriceVariationView extends GetView<HomeController> {
                           //
                           //vars
                           var item = controller.chart;
-                          var firstValue = item.indicators?.quote?[0].open?[0];
-                          var itemValue = item.indicators?.quote?[0].open?[index];
+                          var firstValue = item.indicators?.quote?[0].open?[0] ?? 0.0;
+                          var itemValue = item.indicators?.quote?[0].open?[index] ?? 0.0;
 
                           return PriceVariationCard(
                               day: "${index + 1}",
                               date: DateFormat("dd/MM/yyyy").format(DateTime.fromMillisecondsSinceEpoch(item.timestamp![index] * 1000)),
-                              type: (index == 0 || itemValue == null || item.indicators?.quote?[0].open?[index - 1] == null)
+                              type: (index == 0 || itemValue == 0.0 || item.indicators?.quote?[0].open?[index - 1] == null)
                                   ? 0
                                   : (itemValue > item.indicators!.quote![0].open![index - 1]!)
                                       ? 1
                                       : 2,
-                              value: itemValue == null ? " - " : 'R\$ ${NumberFormat('#,##0.00', 'pt_BR').format(double.parse('$itemValue'))}',
-                              d1Variation: (index == 0 || itemValue == null || item.indicators?.quote?[0].open?[index - 1] == null)
+                              value: itemValue == 0.0 ? " - " : 'R\$ ${NumberFormat('#,##0.00', 'pt_BR').format(double.parse('$itemValue'))}',
+                              d1Variation: (index == 0 || itemValue == 0.0 || item.indicators?.quote?[0].open?[index - 1] == null)
                                   ? ' - '
                                   : (itemValue > item.indicators!.quote![0].open![index - 1]!)
                                       ? '+${(((itemValue - item.indicators!.quote![0].open![index - 1]!) / itemValue) * 100).toStringAsFixed(2)}%'
                                       : '-${(((item.indicators!.quote![0].open![index - 1]! - itemValue) / item.indicators!.quote![0].open![index - 1]!) * 100).toStringAsFixed(2)}%',
-                              firstDateVariation: (index == 0 || firstValue == null || itemValue == null)
+                              firstDateVariation: (index == 0 || firstValue == 0.0 || itemValue == 0.0)
                                   ? ' - '
                                   : (itemValue > firstValue)
                                       ? '+${(((itemValue - firstValue) / itemValue) * 100).toStringAsFixed(2)}%'

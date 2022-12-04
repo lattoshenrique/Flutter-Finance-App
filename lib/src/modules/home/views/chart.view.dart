@@ -114,6 +114,7 @@ class _ChartViewState extends State<ChartView> {
 
   LineChartData mainData() {
     return LineChartData(
+      lineTouchData: LineTouchData(enabled: true, touchTooltipData: LineTouchTooltipData(tooltipBgColor: AppColors.SECUNDARY)),
       gridData: FlGridData(
         show: true,
         verticalInterval: 1,
