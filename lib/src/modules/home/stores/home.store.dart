@@ -1,5 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:guide_selective_process/src/core/enums/loadingstatus.enum.dart';
 import 'package:get/get.dart';
@@ -46,7 +48,18 @@ class HomeStore extends GetxController {
     loadingStatus.value = ELoadingStatus.loading;
     Get.toNamed(AppRoutes.CHART_CARD);
     _filterParams.chart = await _searchRepository.fetchChart(symbol);
-    calcCardPercentage();
+    if (_filterParams.chart.timestamp!.length < 30) {
+      _filterParams.chart.meta!.currency = null;
+      Get.back();
+      Get.snackbar("Oops!", 'Este ativo está com os dados imcompletos no momento. Tente novamente mais tarde.',
+          margin: const EdgeInsets.all(20.0),
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: AppColors.SECUNDARY,
+          colorText: AppColors.PRIMARY);
+    } else {
+      calcCardPercentage();
+    }
+
     loadingStatus.value = _searchRepository.loadingStatus;
   }
 

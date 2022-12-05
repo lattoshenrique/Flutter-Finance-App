@@ -15,7 +15,7 @@ class ChartPriceCardWidget extends GetView<HomeController> {
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
 
-    return Obx(() => controller.isLoading
+    return Obx(() => (controller.isLoading || controller.chart.timestamp!.length < 30)
         ? const LoadingChartPriceCardWidget()
         : Column(mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center, children: [
             Container(
