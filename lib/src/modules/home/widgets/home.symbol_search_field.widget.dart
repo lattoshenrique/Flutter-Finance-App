@@ -11,41 +11,45 @@ class SymbolSearchFieldWidget extends GetView<HomeController> {
   Widget build(BuildContext context) {
     var media = MediaQuery.of(context).size;
 
-    return Container(
-        padding: EdgeInsets.symmetric(horizontal: media.width * 0.05, vertical: media.width * 0.1),
+    return Obx(() => Container(
         decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(10)),
             boxShadow: [
               BoxShadow(color: AppColors.PRIMARY.withOpacity(0.5), blurRadius: 10.0, spreadRadius: 0.5, offset: const Offset(1.0, 5.5)),
             ],
             color: AppColors.PRIMARY),
-        child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.end,
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Text("Pesquisar Ativo", style: AppStyles.head1.copyWith(color: Colors.white, fontSize: media.width * 0.06)),
-              SizedBox(height: media.width * 0.05),
-              TextField(
-                  controller: controller.searchController,
-                  focusNode: controller.searchFocus,
-                  onChanged: (query) {
-                    if (query.length > 2) controller.onChangeHandler(query);
-                  },
-                  decoration: InputDecoration(
-                    hintText: "Símbolo, nome...",
-                    prefixIcon: const Icon(Icons.search),
-                    suffixIcon: Obx(() => controller.term.isNotEmpty
-                        ? IconButton(
-                            onPressed: (() {
-                              controller.searchFocus.unfocus();
-                              controller.searchController.clear();
-                              controller.term = '';
-                            }),
-                            icon: const Icon(Icons.clear),
-                          )
-                        : const Icon(Icons.abc, color: Colors.transparent)),
-                  ))
-            ]));
+        child: AnimatedPadding(
+            padding:
+                EdgeInsets.symmetric(horizontal: media.width * 0.05, vertical: (controller.term.isEmpty) ? media.width * 0.15 : media.width * 0.05),
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.decelerate,
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Text("Pesquisar Ativo", style: AppStyles.head1.copyWith(color: Colors.white, fontSize: media.width * 0.06)),
+                  SizedBox(height: media.width * 0.05),
+                  TextField(
+                      controller: controller.searchController,
+                      focusNode: controller.searchFocus,
+                      onChanged: (query) {
+                        if (query.length > 2) controller.onChangeHandler(query);
+                      },
+                      decoration: InputDecoration(
+                        hintText: "Símbolo, nome...",
+                        prefixIcon: const Icon(Icons.search),
+                        suffixIcon: Obx(() => controller.term.isNotEmpty
+                            ? IconButton(
+                                onPressed: (() {
+                                  controller.searchFocus.requestFocus();
+                                  controller.searchController.clear();
+                                  controller.term = '';
+                                }),
+                                icon: const Icon(Icons.clear),
+                              )
+                            : const Icon(Icons.abc, color: Colors.transparent)),
+                      ))
+                ]))));
   }
 }

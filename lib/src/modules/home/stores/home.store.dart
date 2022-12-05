@@ -44,9 +44,9 @@ class HomeStore extends GetxController {
 
   fetchChart(String symbol) async {
     loadingStatus.value = ELoadingStatus.loading;
+    Get.toNamed(AppRoutes.CHART_CARD);
     _filterParams.chart = await _searchRepository.fetchChart(symbol);
     calcCardPercentage();
-    await Get.toNamed(AppRoutes.CHART_CARD);
     loadingStatus.value = _searchRepository.loadingStatus;
   }
 

@@ -24,7 +24,7 @@ class HomeView extends GetView<HomeController> {
                 padding: EdgeInsets.all(media.width * 0.05),
                 child: Obx(() => AnimatedAlign(
                     alignment: (controller.searchFocus.hasFocus || controller.term.isNotEmpty) ? Alignment.topCenter : Alignment.center,
-                    duration: const Duration(milliseconds: 500),
+                    duration: const Duration(milliseconds: 300),
                     curve: Curves.decelerate,
                     child: Column(
                         mainAxisSize: MainAxisSize.min,

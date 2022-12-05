@@ -3,6 +3,7 @@ import 'package:guide_selective_process/src/core/styles/appcolors.style.dart';
 import 'package:guide_selective_process/src/core/styles/appstyles.style.dart';
 import 'package:guide_selective_process/src/modules/home/controllers/home.controller.dart';
 import 'package:get/get.dart';
+import 'package:guide_selective_process/src/modules/home/widgets/loading/home.query_result.loading.widget.dart';
 
 class QueryResultWidget extends GetView<HomeController> {
   const QueryResultWidget({super.key});
@@ -17,7 +18,7 @@ class QueryResultWidget extends GetView<HomeController> {
             child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
                 child: Obx(() => controller.isLoading
-                    ? Padding(padding: EdgeInsets.all(media.width * 0.01), child: const CircularProgressIndicator(color: AppColors.PRIMARY))
+                    ? const LoadingQueryResult()
                     : controller.queryResult.isNotEmpty
                         ? ListView.separated(
                             physics: const NeverScrollableScrollPhysics(),
@@ -31,7 +32,6 @@ class QueryResultWidget extends GetView<HomeController> {
                               var item = controller.queryResult;
                               return InkWell(
                                   onTap: () {
-                                    controller.searchFocus.unfocus();
                                     controller.loadChart(item[index].symbol!);
                                   },
                                   child: Container(
