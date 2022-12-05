@@ -37,13 +37,13 @@ class HomeView extends GetView<HomeController> {
             child: Padding(
                 padding: EdgeInsets.all(media.width * 0.05),
                 child: Stack(alignment: Alignment.center, children: [
-                  Obx(() => (!controller.isSearch.value)
-                      ? const HomePriceCard()
-                      : AnimatedPadding(
-                          padding: MediaQuery.of(context).viewInsets,
-                          duration: const Duration(milliseconds: 300),
-                          curve: Curves.decelerate,
-                          child: Column(
+                  AnimatedPadding(
+                      padding: MediaQuery.of(context).viewInsets,
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.decelerate,
+                      child: Obx(() => (!controller.isSearch.value)
+                          ? const HomePriceCard()
+                          : Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [const SymbolSearchField(), Obx(() => (controller.term.isEmpty) ? Container() : const QueryResult())]))),
