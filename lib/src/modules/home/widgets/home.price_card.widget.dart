@@ -19,7 +19,6 @@ class HomePriceCard extends GetView<HomeController> {
           decoration: BoxDecoration(
             color: Colors.grey.withOpacity(0.15),
             borderRadius: const BorderRadius.all(Radius.circular(10)),
-            // border: Border.all(color: Colors.grey.withOpacity(0.5), width: 3.0)
           ),
           child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Row(children: [
@@ -32,7 +31,6 @@ class HomePriceCard extends GetView<HomeController> {
               Icon((controller.cardView.isPositive!) ? Icons.trending_up : Icons.trending_down,
                   size: media.width * 0.1, color: (controller.cardView.isPositive!) ? Colors.green : Colors.red),
             ]),
-            //SizedBox(height: media.width * 0.02),
             Text(DateFormat("dd/MM/yyyy").format(DateTime.fromMillisecondsSinceEpoch(controller.chart.timestamp!.last * 1000)),
                 style: AppStyles.subtitle1),
             SizedBox(height: media.width * 0.05),

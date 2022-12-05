@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:guide_selective_process/src/core/styles/appcolors.style.dart';
 
 class AppStyles {
   //
@@ -21,7 +22,7 @@ class AppStyles {
   static TextStyle get body4 => Get.context!.textTheme.bodyText2!.copyWith(fontSize: 13);
   //CAPTIONS
   static TextStyle get caption1 => Get.context!.textTheme.caption!;
-  static TextStyle get caption2 => Get.context!.textTheme.caption!.copyWith(fontWeight: FontWeight.bold);
+  static TextStyle get caption2 => Get.context!.textTheme.caption!.copyWith(fontWeight: FontWeight.bold, color: AppColors.GRAY7E);
   //VALUES
   static TextStyle get value1 => Get.context!.textTheme.caption!.copyWith(fontSize: 29);
   static TextStyle get value2 => Get.context!.textTheme.subtitle1!;

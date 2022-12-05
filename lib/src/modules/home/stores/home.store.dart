@@ -17,6 +17,8 @@ class HomeStore extends GetxController {
   final loadingStatus = ELoadingStatus.completed.obs;
 
   final queryResult = <SearchModel>[].obs;
+  RxBool isSearch = true.obs;
+
   CardViewModel? cardView;
 
   ChartsModel get chart => _filterParams.chart;
@@ -27,7 +29,9 @@ class HomeStore extends GetxController {
 
   searchSymbol(String term) async {
     queryResult.value = [];
+    loadingStatus.value = ELoadingStatus.loading;
     queryResult.assignAll(await _searchRepository.fetchSymbol(term));
+
     if (queryResult.isEmpty) {
       Get.snackbar("Oops!", 'Não encontrei resultados para o termo: "$term"',
           margin: const EdgeInsets.all(20.0),
@@ -35,13 +39,14 @@ class HomeStore extends GetxController {
           backgroundColor: AppColors.SECUNDARY,
           colorText: AppColors.PRIMARY);
     }
+    loadingStatus.value = _searchRepository.loadingStatus;
   }
 
   fetchChart(String symbol) async {
-    queryResult.value = [];
     loadingStatus.value = ELoadingStatus.loading;
     _filterParams.chart = await _searchRepository.fetchChart(symbol);
     calcCardPercentage();
+    isSearch.value = false;
     loadingStatus.value = _searchRepository.loadingStatus;
   }
 

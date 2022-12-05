@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 class AppColors {
   static const Color SECUNDARY = Color(0xFFb66fde);
   static const Color PRIMARY = Color(0xFF461d60);
+  static const Color BACKGROUND = Colors.white;
 
-  static const Color BUTTON_COLOR = Color(0xFF1a1a1a);
+  static const Color BUTTON = Color(0xFF1a1a1a);
 
   static const Color GRAYD0 = Color(0xFFD0D0D0);
   static const Color GRAYB6 = Color(0xFFB6BCC4);

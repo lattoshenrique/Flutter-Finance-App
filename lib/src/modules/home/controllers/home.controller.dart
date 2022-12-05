@@ -1,4 +1,4 @@
-import 'dart:convert';
+import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,12 +8,9 @@ import 'package:guide_selective_process/src/core/models/search.model.dart';
 import 'package:guide_selective_process/src/core/stores/filterparams.store.dart';
 import 'package:guide_selective_process/src/modules/home/models/card.model.dart';
 import 'package:guide_selective_process/src/modules/home/stores/home.store.dart';
-import 'package:logger/logger.dart';
 
 class HomeController {
   HomeController(this._store);
-
-  RxBool showAvg = false.obs;
 
   //
   //Classes
@@ -25,8 +22,15 @@ class HomeController {
   bool get isLoading => _store.loadingStatus.value == ELoadingStatus.loading;
   List<SearchModel> get queryResult => _store.queryResult;
   CardViewModel get cardView => _store.cardView!;
+
   ChartsModel get chart => _filterParams.chart;
   set chart(ChartsModel val) => _filterParams.chart = val;
+
+  RxBool get isSearch => _store.isSearch;
+  set isSearch(RxBool val) => _store.isSearch = val;
+
+  String get term => _filterParams.term;
+  set term(String val) => _filterParams.term = val;
 
   //
   //View Variables
@@ -35,15 +39,27 @@ class HomeController {
   GlobalKey<ScaffoldState> priceVariationScaffoldKey = GlobalKey<ScaffoldState>();
 
   TextEditingController searchController = TextEditingController();
+  final FocusNode searchFocus = FocusNode();
+  Timer? searchOnStoppedTyping;
 
   //
   //Functions
   loadSymbol() {
-    _store.searchSymbol(searchController.text);
+    if (term.isNotEmpty) _store.searchSymbol(term);
   }
 
   loadChart(String symbol) {
-    searchController.text = '';
     _store.fetchChart(symbol);
+  }
+
+  onChangeHandler(String query) {
+    const duration = Duration(milliseconds: 400);
+    if (searchOnStoppedTyping != null) {
+      searchOnStoppedTyping!.cancel();
+    }
+    searchOnStoppedTyping = Timer(duration, () {
+      term = query;
+      loadSymbol();
+    });
   }
 }

@@ -1,3 +1,4 @@
+import 'package:guide_selective_process/src/core/styles/appcolors.style.dart';
 import 'package:guide_selective_process/src/core/styles/appstyles.style.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,7 +18,6 @@ class PriceVariationView extends GetView<HomeController> {
           centerTitle: true,
         ),
         key: controller.priceVariationScaffoldKey,
-        backgroundColor: Colors.white,
         body: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: Stack(children: [
