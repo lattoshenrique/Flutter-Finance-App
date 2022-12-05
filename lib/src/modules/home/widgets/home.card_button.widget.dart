@@ -18,7 +18,7 @@ class HomeCardButton extends GetView {
         padding: EdgeInsets.all(media.width * 0.05),
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(10)),
-          color: AppColors.BUTTON_COLOR,
+          color: AppColors.BUTTON,
         ),
         child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

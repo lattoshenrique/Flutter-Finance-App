@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:guide_selective_process/src/core/styles/appstyles.style.dart';
-
 import 'package:get/get.dart';
 
 class PriceVariationCard extends GetView {

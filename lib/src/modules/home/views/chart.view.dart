@@ -37,7 +37,6 @@ class _ChartViewState extends State<ChartView> {
           centerTitle: true,
         ),
         key: _controller.chartScaffoldKey,
-        backgroundColor: Colors.white,
         body: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: Stack(children: [

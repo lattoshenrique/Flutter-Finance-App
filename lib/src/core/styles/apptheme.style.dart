@@ -11,7 +11,7 @@ class AppTheme {
 
         visualDensity: VisualDensity.adaptivePlatformDensity,
 
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue).copyWith(secondary: AppColors.PRIMARY),
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue).copyWith(primary: AppColors.PRIMARY, secondary: AppColors.SECUNDARY),
 
         //Define the default input theme
         inputDecorationTheme: InputDecorationTheme(
@@ -30,7 +30,7 @@ class AppTheme {
           ),
           filled: true,
           fillColor: Colors.white,
-          hintStyle: const TextStyle(color: AppColors.GRAY42),
+          hintStyle: const TextStyle(color: AppColors.GRAYB6),
         ),
 
         //Define the default appbar theme
@@ -59,7 +59,7 @@ class AppTheme {
           ),
         ),
 
-        scaffoldBackgroundColor: Colors.white,
+        scaffoldBackgroundColor: AppColors.BACKGROUND,
         // unselectedWidgetColor: AppColors.GRAYDA,
         // toggleableActiveColor: AppColors.PRIMARY,
 
