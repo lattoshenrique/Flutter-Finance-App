@@ -4,8 +4,8 @@ import 'package:guide_selective_process/src/core/styles/appstyles.style.dart';
 import 'package:guide_selective_process/src/modules/home/controllers/home.controller.dart';
 import 'package:get/get.dart';
 
-class SymbolSearchField extends GetView<HomeController> {
-  const SymbolSearchField({super.key});
+class SymbolSearchFieldWidget extends GetView<HomeController> {
+  const SymbolSearchFieldWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

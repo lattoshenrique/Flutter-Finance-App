@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:guide_selective_process/src/core/styles/appstyles.style.dart';
 import 'package:get/get.dart';
 
-class PriceVariationCard extends GetView {
+class PriceVariationCardWidget extends GetView {
   final String day;
   final String date;
   final int type;
@@ -10,7 +10,7 @@ class PriceVariationCard extends GetView {
   final String d1Variation;
   final String firstDateVariation;
 
-  const PriceVariationCard(
+  const PriceVariationCardWidget(
       {required this.day,
       required this.date,
       required this.type,

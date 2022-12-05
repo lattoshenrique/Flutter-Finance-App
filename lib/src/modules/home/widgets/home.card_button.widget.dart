@@ -3,12 +3,12 @@ import 'package:guide_selective_process/src/core/styles/appcolors.style.dart';
 import 'package:guide_selective_process/src/core/styles/appstyles.style.dart';
 import 'package:get/get.dart';
 
-class HomeCardButton extends GetView {
+class HomeCardButtonWidget extends GetView {
   final String text;
   final IconData icon;
   final String? subtitle;
 
-  const HomeCardButton({this.subtitle, required this.text, required this.icon, super.key});
+  const HomeCardButtonWidget({this.subtitle, required this.text, required this.icon, super.key});
 
   @override
   Widget build(BuildContext context) {

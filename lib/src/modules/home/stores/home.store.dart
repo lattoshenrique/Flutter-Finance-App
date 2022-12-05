@@ -9,6 +9,7 @@ import 'package:guide_selective_process/src/core/repositories/search.repository.
 import 'package:guide_selective_process/src/core/stores/filterparams.store.dart';
 import 'package:guide_selective_process/src/core/styles/appcolors.style.dart';
 import 'package:guide_selective_process/src/modules/home/models/card.model.dart';
+import 'package:guide_selective_process/src/core/routes/app.routes.dart';
 
 class HomeStore extends GetxController {
   final SearchRepository _searchRepository = Get.find();
@@ -17,7 +18,6 @@ class HomeStore extends GetxController {
   final loadingStatus = ELoadingStatus.completed.obs;
 
   final queryResult = <SearchModel>[].obs;
-  RxBool isSearch = true.obs;
 
   CardViewModel? cardView;
 
@@ -46,7 +46,7 @@ class HomeStore extends GetxController {
     loadingStatus.value = ELoadingStatus.loading;
     _filterParams.chart = await _searchRepository.fetchChart(symbol);
     calcCardPercentage();
-    isSearch.value = false;
+    await Get.toNamed(AppRoutes.CHART_CARD);
     loadingStatus.value = _searchRepository.loadingStatus;
   }
 

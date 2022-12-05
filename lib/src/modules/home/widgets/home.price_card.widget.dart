@@ -7,8 +7,8 @@ import 'package:intl/intl.dart';
 
 import 'package:get/get.dart';
 
-class HomePriceCard extends GetView<HomeController> {
-  const HomePriceCard({super.key});
+class HomePriceCardWidget extends GetView<HomeController> {
+  const HomePriceCardWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -69,14 +69,14 @@ class HomePriceCard extends GetView<HomeController> {
                 SizedBox(height: media.width * 0.05),
                 InkWell(
                     onTap: () => Get.toNamed(AppRoutes.PRICE_VARIATION),
-                    child: const HomeCardButton(
+                    child: const HomeCardButtonWidget(
                       icon: Icons.analytics,
                       text: "Variação do Preço",
                     )),
                 SizedBox(height: media.width * 0.03),
                 InkWell(
                     onTap: () => Get.toNamed(AppRoutes.CHART),
-                    child: const HomeCardButton(
+                    child: const HomeCardButtonWidget(
                       icon: Icons.bar_chart,
                       text: "Gráfico",
                     ))

@@ -1,13 +1,12 @@
-import 'package:guide_selective_process/src/core/styles/appcolors.style.dart';
 import 'package:guide_selective_process/src/core/styles/appstyles.style.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:guide_selective_process/src/modules/home/controllers/home.controller.dart';
-import 'package:guide_selective_process/src/modules/home/widgets/price_variation.card.widget.dart';
+import 'package:guide_selective_process/src/modules/home/widgets/chart.price_variation.card.widget.dart';
 import 'package:intl/intl.dart';
 
-class PriceVariationView extends GetView<HomeController> {
-  const PriceVariationView({super.key});
+class ChartPriceVariationView extends GetView<HomeController> {
+  const ChartPriceVariationView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +36,7 @@ class PriceVariationView extends GetView<HomeController> {
                           var firstValue = item.indicators?.quote?[0].open?[0] ?? 0.0;
                           var itemValue = item.indicators?.quote?[0].open?[index] ?? 0.0;
 
-                          return PriceVariationCard(
+                          return PriceVariationCardWidget(
                               day: "${index + 1}",
                               date: DateFormat("dd/MM/yyyy").format(DateTime.fromMillisecondsSinceEpoch(item.timestamp![index] * 1000)),
                               type: (index == 0 || itemValue == 0.0 || item.indicators?.quote?[0].open?[index - 1] == null)

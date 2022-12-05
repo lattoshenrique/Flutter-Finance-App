@@ -26,15 +26,13 @@ class HomeController {
   ChartsModel get chart => _filterParams.chart;
   set chart(ChartsModel val) => _filterParams.chart = val;
 
-  RxBool get isSearch => _store.isSearch;
-  set isSearch(RxBool val) => _store.isSearch = val;
-
   String get term => _filterParams.term;
   set term(String val) => _filterParams.term = val;
 
   //
   //View Variables
   GlobalKey<ScaffoldState> homeScaffoldKey = GlobalKey<ScaffoldState>();
+  GlobalKey<ScaffoldState> chartCardScaffoldKey = GlobalKey<ScaffoldState>();
   GlobalKey<ScaffoldState> chartScaffoldKey = GlobalKey<ScaffoldState>();
   GlobalKey<ScaffoldState> priceVariationScaffoldKey = GlobalKey<ScaffoldState>();
 

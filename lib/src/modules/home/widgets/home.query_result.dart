@@ -4,8 +4,8 @@ import 'package:guide_selective_process/src/core/styles/appstyles.style.dart';
 import 'package:guide_selective_process/src/modules/home/controllers/home.controller.dart';
 import 'package:get/get.dart';
 
-class QueryResult extends GetView<HomeController> {
-  const QueryResult({super.key});
+class QueryResultWidget extends GetView<HomeController> {
+  const QueryResultWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

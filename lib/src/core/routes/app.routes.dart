@@ -2,6 +2,7 @@
 
 class AppRoutes {
   static const HOME = "/";
-  static const PRICE_VARIATION = "/price_variation";
   static const CHART = "/chart";
+  static const PRICE_VARIATION = "$CHART/price_variation";
+  static const CHART_CARD = "$CHART/chart";
 }
